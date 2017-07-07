@@ -7,7 +7,7 @@ const router = express.Router();
 
 
   // GET http://localhost:3000/api/phones
-router.get('/phones', (req, res, next) => {
+router.get('/api/phones', (req, res, next) => {
   Phone.find((err, phonesList) => {
     if (err) {
       res.json(err);
@@ -19,7 +19,7 @@ router.get('/phones', (req, res, next) => {
 });
 
   // POST http://localhost:3000/api/phones
-router.post('/phones', (req, res, next) => {
+router.post('/api/phones', (req, res, next) => {
   const thePhone = new Phone({
     brand: req.body.brand,
     name: req.body.name,
@@ -40,7 +40,7 @@ router.post('/phones', (req, res, next) => {
   });
 });
 
-router.get('/phones/:id', (req, res, next) => {
+router.get('/api/phones/:id', (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400)
        .json({ message: 'Specified id is not valid' });
@@ -57,7 +57,7 @@ router.get('/phones/:id', (req, res, next) => {
   });
 });
 
-router.put('/phones/:id', (req, res, next) => {
+router.put('/api/phones/:id', (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400)
        .json({ message: 'Specified id is not valid' });
@@ -83,7 +83,7 @@ router.put('/phones/:id', (req, res, next) => {
   });
 });
 
-router.delete('/phones/:id', (req, res, next) => {
+router.delete('/api/phones/:id', (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400)
        .json({ message: 'Specified id is not valid' });

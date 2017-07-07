@@ -17,6 +17,7 @@
     "express-ejs-layouts": "~2.2.0",
     "mongoose": "~4.8.5",
     "morgan": "~1.7.0",
+    "process-nextick-args": "^1.0.7",
     "serve-favicon": "~2.3.2"
   },
   "devDependencies": {

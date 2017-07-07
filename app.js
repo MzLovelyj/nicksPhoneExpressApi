@@ -11,7 +11,7 @@ const cors         = require('cors');
 
 
 dotenv.config();
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://localhost/phone-app');
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.locals.title = 'Express - Generated with IronGenerator';
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,7 +37,11 @@ const index = require('./routes/index');
 app.use('/', index);
 
 const phonesApi = require('./routes/phones-api');
-app.use('/api', phonesApi);
+app.use('/', phonesApi);
+
+// app.use(function(req, res) {
+//   res.sendfile(__dirname + '/public/index.html');
+// });
 
 
 // catch 404 and forward to error handler
